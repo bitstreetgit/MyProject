@@ -1,0 +1,38 @@
+// Log4j
+	
+	//Steps:
+	//1.Add log4j.xml in project directory
+	//2.Add Log class in utility package
+	//3.Configure @BeforeSuite at BaseClass to configure log4j.xml
+	//DomConfigurator.configure("log4j.xml")
+	//4.Need to just call in methods in test case from Log class
+	
+// Excel Library
+
+	//Steps :
+
+	1.Add ExcelLibrary into utility package
+	2.Create a folder and TestData.xlsx in that
+	3.Create a package for DataProvider and add DataProvider class there and create the object of ExcelLibrary class
+	4.Add the DataProvider methods
+	5.Call the DataProvider methods from test cases
+	
+// Extent Report
+
+	Steps:
+	
+	- Add/Create extent-config.xml file for Extent Report Configuration
+	- Add/Create ExtentManager Class in utility package -- to create the object of ExtentHtmlReporter and load extent-config.xml
+	- Create a folder or Save Extent Report under test-output
+	- Configure ExtentManager.setExtent() in @BeforeSuite method in BaseClass
+	- Configure ExtentManager.endReport() in @AfterSuite method in BaseClass
+	
+    To attach the screenshot in extent report 
+    
+	- Add/Create Listener Class -- ListernerClass
+	- To call the listener add the below listener(inside suite tag) setting in testng.xml
+	<Listeners>
+	      <listener class-name ="com.project.util.ListenerClass"></listener>
+	</Listeners>
+	
+

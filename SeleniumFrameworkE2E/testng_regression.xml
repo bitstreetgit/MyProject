@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test name="Test_Regression">
+		<parameter name="browser" value="Chrome"></parameter>
+		<groups>
+			<run>
+				<include name="Regression"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="com.mystore.testcases.parallel.LoginPageTest" />
+			<class name="com.mystore.testcases.parallel.HomePageTest" />
+			<class name="com.mystore.testcases.parallel.AccountCreationPageTest" />
+			<class name="com.mystore.testcases.parallel.SearchResultPageTest" />
+			<class name="com.mystore.testcases.parallel.IndexPageTest" />
+			<class name="com.mystore.testcases.parallel.EndToEndTest" />
+			<class name="com.mystore.testcases.parallel.OrderPageTest" />
+			<class name="com.mystore.testcases.parallel.AddToCartPageTest" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
