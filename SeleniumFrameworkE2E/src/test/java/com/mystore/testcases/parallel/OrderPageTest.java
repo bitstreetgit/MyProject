@@ -11,6 +11,7 @@ import com.mystore.pageobjects.parallel.AddToCartPageParallel;
 import com.mystore.pageobjects.parallel.IndexPageParallel;
 import com.mystore.pageobjects.parallel.OrderPageParallel;
 import com.mystore.pageobjects.parallel.SearchResultPageParallel;
+import com.mystore.utility.Log;
 
 public class OrderPageTest extends BaseClassForParallelTesting {
 
@@ -33,17 +34,26 @@ public class OrderPageTest extends BaseClassForParallelTesting {
 	@Test(groups = "Regression")
 	public void verifyTotalPrice() {
 
+		Log.startTestCase("verifyTotalPrice");
 		indexPage = new IndexPageParallel();
+		Log.info("Entering text in search textbox");
 		searchResultPage = indexPage.searchProduct("t-shirt");
+		Log.info("Clicking on product");
 		addToCartPage = searchResultPage.clickOnProduct();
+		Log.info("Entering Quantity");
 		addToCartPage.enterQuantity("2");
+		Log.info("Selecting Size");
 		addToCartPage.selectSize("M");
+		Log.info("Clicking on Add To Cart");
 		addToCartPage.clickOnAddToCart();
+		Log.info("Clicking on Checkout");
 		orderPage = addToCartPage.clickOnCheckout();
+		Log.info("Verifying Total Price");
 		Double unitPrice = orderPage.getUnitPrice();
 		Double totalPrice = orderPage.getTotalPrice();
 		Double totalExpectedPrice = (unitPrice * 2) + 2;
 		Assert.assertEquals(totalPrice, totalExpectedPrice);
-
+		Log.info("Total Price verified successfully");
+		Log.endTestCase("verifyTotalPrice");
 	}
 }

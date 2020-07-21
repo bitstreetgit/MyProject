@@ -10,6 +10,7 @@ import com.mystore.base.parallel.BaseClassForParallelTesting;
 import com.mystore.pageobjects.parallel.AccountCreationPageParallel;
 import com.mystore.pageobjects.parallel.IndexPageParallel;
 import com.mystore.pageobjects.parallel.LoginPageParallel;
+import com.mystore.utility.Log;
 
 public class AccountCreationPageTest extends BaseClassForParallelTesting {
 
@@ -30,10 +31,17 @@ public class AccountCreationPageTest extends BaseClassForParallelTesting {
 
 	@Test(groups = "Sanity")
 	public void VerifyCreatAccountPageTest() {
+		
+		Log.startTestCase("VerifyCreatAccountPageTest");
 		indexPage = new IndexPageParallel();
+		Log.info("Clicking on SignIn link");
 		loginPage = indexPage.clickOnSignIn();
+		Log.info("Entering new email address");
 		accountCreatePage = loginPage.createNewAccount("bitstreet11@gmail.com");
+		Log.info("Verifying Create Account is displaying");
 		boolean result = accountCreatePage.validateAccountCreatePage();
 		Assert.assertTrue(result);
+		Log.info("Create Account is displayed");
+		Log.endTestCase("VerifyCreatAccountPageTest");
 	}
 }

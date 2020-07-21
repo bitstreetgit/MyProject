@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import com.mystore.base.parallel.BaseClassForParallelTesting;
 import com.mystore.pageobjects.parallel.IndexPageParallel;
 import com.mystore.pageobjects.parallel.SearchResultPageParallel;
+import com.mystore.utility.Log;
 
 public class SearchResultPageTest extends BaseClassForParallelTesting {
 
@@ -29,9 +30,13 @@ public class SearchResultPageTest extends BaseClassForParallelTesting {
 	@Test(groups = "Smoke")
 	public void productAvailabiltyTest() {
 
+		Log.startTestCase("productAvailabiltyTest");
 		indexPage = new IndexPageParallel();
+		Log.info("Verifying product is displaying");
 		searchResultPage = indexPage.searchProduct("t-shirt");
 		boolean flag = searchResultPage.isProductAvailable();
 		Assert.assertTrue(flag);
+		Log.info("Product is dispalyed");
+		Log.endTestCase("productAvailabiltyTest");
 	}
 }
